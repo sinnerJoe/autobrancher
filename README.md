@@ -1,6 +1,8 @@
 # autobrancher
-A script for creating to_dev and to_qa" branche.
+## A script for creating to_dev and to_qa" branche.
+
 **The stepts:**
+
 1. Identifies the %task% branch if you are on the '%task%_to_dev' or '%task%_to_qa' branch
 2. Moves to the branch %task%
 3. Pushes the changes of the %task% branch
