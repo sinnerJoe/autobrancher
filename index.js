@@ -92,17 +92,16 @@ let mainBranch = findMainBranch();
 const toDevBranch = `${mainBranch}_to_dev`;
 const toQaBranch = `${mainBranch}_to_qa`;
 
-if (process.argv.length === 3) {
-    switch (process.argv[2]) {
-        case 'clean': 
-            moveToBranch(mainBranch);
-            for(const branch of [toDevBranch, toQaBranch]){
-                try{
-                    deleteBranch(branch);
-                }catch(err){}
-            }
-            process.exit(0);
-    }
+if (process.argv.length === 2) {
+    console.log("CONDITION " + process.argv[1])
+    if(process.argv[1] === 'clean')
+        moveToBranch(mainBranch);
+        for(const branch of [toDevBranch, toQaBranch]){
+            try{
+                deleteBranch(branch);
+            }catch(err){}
+        }
+        process.exit(0);
 } 
 
 if(['master', 'qa', 'development'].includes(mainBranch)){
