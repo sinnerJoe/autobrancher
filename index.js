@@ -74,7 +74,7 @@ const findMainBranch = () => {
     let mainBranch = getCurrentBranch()
     for (const reg of [toDevReg, toQaReg]) {
         if (mainBranch.match(reg)) {
-            let mainBranch = mainBranch.replace(reg, "$1");
+            mainBranch = mainBranch.replace(reg, "$1");
             break;
         }
     }
