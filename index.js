@@ -115,8 +115,9 @@ if(['master', 'qa', 'development'].includes(mainBranch)){
 fetchRemoteBranches();
 
 try{
-        publishTemportaryBranch(toDevBranch, 'development'),
-        publishTemportaryBranch(toQaBranch, 'qa')
+        pushTo(mainBranch);
+        publishTemportaryBranch(toDevBranch, 'development');
+        publishTemportaryBranch(toQaBranch, 'qa');
 }catch(err){
 
 }
