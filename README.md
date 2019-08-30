@@ -1,6 +1,6 @@
 # autobrancher
 A script for creating to_dev and to_qa"
-## How to create a command that runs the script
+## How to create the global command to run the script
 
 - **Git Bash**
   
