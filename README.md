@@ -4,7 +4,7 @@ A script for creating to_dev and to_qa"
 
 - **Git Bash**
   
-  *Add this string at the end of /etc/bash.bashrc*
+  *Add this string at the end of /etc/bash.bashrc:*
   
   alias autobrancher="node %PATH_TO_THE_REPO_FOLDER%/index.js"
 
