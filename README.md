@@ -1,5 +1,5 @@
 # autobrancher
-## A script for creating to_dev and to_qa" branche.
+## A script for creating to_dev and to_qa" branch.
 
 **The stepts:**
 
