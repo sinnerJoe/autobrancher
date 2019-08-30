@@ -94,7 +94,7 @@ const toQaBranch = `${mainBranch}_to_qa`;
 
 if (process.argv.length === 2) {
     console.log("CONDITION " + process.argv[1])
-    if(process.argv[1] === 'clean')
+    if(process.argv[1] === 'clean'){
         moveToBranch(mainBranch);
         for(const branch of [toDevBranch, toQaBranch]){
             try{
@@ -102,6 +102,7 @@ if (process.argv.length === 2) {
             }catch(err){}
         }
         process.exit(0);
+    }
 } 
 
 if(['master', 'qa', 'development'].includes(mainBranch)){
