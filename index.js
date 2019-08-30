@@ -92,9 +92,9 @@ let mainBranch = findMainBranch();
 const toDevBranch = `${mainBranch}_to_dev`;
 const toQaBranch = `${mainBranch}_to_qa`;
 
-if (process.argv.length === 2) {
-    console.log("CONDITION " + process.argv[1])
-    if(process.argv[1] === 'clean'){
+if (process.argv.length === 3) {
+    console.log("CONDITION " + process.argv[2])
+    if(process.argv[2] === 'clean'){
         moveToBranch(mainBranch);
         for(const branch of [toDevBranch, toQaBranch]){
             try{
