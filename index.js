@@ -130,7 +130,6 @@ function publishTemportaryBranch(branch, pullTarget) {
 
     try {
 
-        console.log(`mainBranch = ${mainBranch}`)
         moveToBranch(mainBranch)
 
         if (!branchExistsLocaly(branch)) {
