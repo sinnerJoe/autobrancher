@@ -6,7 +6,8 @@
 1. Identifies the **%task%** branch if you are on the **'%task%_to_dev'** or **'%task%_to_qa'** branch
 2. Moves to the branch **%task%**
 3. Pushes the changes of the **%task%** branch
-4. Creates the **%task%_to_dev**/**%task%_to_qa** branch or pulls it from the server if it exists there
+4. Creates the **%task%_to_dev**/**%task%_to_qa** branch or pulls it from the server if it exists upstream
+   and moves to that branch
 5. Merges it with the **%task%** branch
 6. Pulls from upstream **development/qa**
 7. Pushes the temporary branches to the server.
