@@ -18,7 +18,7 @@
   
   *Add this string at the end of /etc/bash.bashrc:*
   
-  alias autobrancher="node %PATH_TO_THE_REPO_FOLDER%/index.js"
+    alias autobrancher="node %PATH_TO_THE_REPO_FOLDER%/index.js"
 
 - **Windows CMD/Powershell**
 
