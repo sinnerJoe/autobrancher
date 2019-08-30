@@ -10,4 +10,4 @@ A script for creating to_dev and to_qa"
 
 - **Windows CMD**
 
-Put the autobrancher.bat file in a PATH directory or add the cloned directory to the PATH variable.
+  Put the autobrancher.bat file in a PATH directory or add the cloned directory to the PATH variable.
