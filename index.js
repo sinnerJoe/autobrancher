@@ -1,6 +1,6 @@
 const cp = require('child_process');
 const process = require("process")
-
+const fs = require('fs');
 
 const fetchRemoteBranches = () => cp.execSync("git fetch -p --all", {stdio: ['ignore', 'pipe', 'pipe']},).toString();
 
@@ -48,6 +48,17 @@ const getCurrentBranch = () => {
     }
 }
 
+const getReponame = () => {
+    const stdout = cp.execSync('git remote get-url origin');
+    const reg = /git@bitbucket.org:adminme\/([-\w\d_]+).git/;
+    const match = stdout.toString().match(reg);
+    if(match && typeof match[1] == 'string'){
+        return match[1];
+    } else {
+        return null;
+    }
+}
+
 const branchExistsLocaly = (soughtBranch) => {
     const branchList = getBranchList();
     for(const branch of branchList){
@@ -82,9 +93,13 @@ const findMainBranch = () => {
 }
 
 
-if (process.argv.length > 3) {
+if (process.argv.length > 4) {
     throw "Too many arguments"
 } 
+
+if (process.argv.length == 4 && process.argv[2] == '--all'){
+
+}
 
 
 let mainBranch = findMainBranch();
@@ -118,6 +133,14 @@ try{
         pushTo(mainBranch);
         publishTemportaryBranch(toDevBranch, 'development');
         publishTemportaryBranch(toQaBranch, 'qa');
+        const reponame = getReponame();
+        if(!reponame) return;
+        console.log('\n\n========Pull request links============');
+        console.log(`To dev:`);
+        console.log(`https://bitbucket.org/adminme/${reponame}/pull-requests/new?source=${toDevBranch}&dest=development`);
+        console.log(`To qa:`);
+        console.log(`https://bitbucket.org/adminme/${reponame}/pull-requests/new?source=${toQaBranch}&dest=qa`);
+
 }catch(err){
 
 }
@@ -163,4 +186,8 @@ function publishTemportaryBranch(branch, pullTarget) {
             default: console.log('OTHER ERROR: ' + err.message); break;
         }
     }
+}
+
+function repeatForSubfolders(command){
+    return 0
 }
