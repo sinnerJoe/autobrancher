@@ -25,5 +25,6 @@
 
   Put the autobrancher.bat file in a PATH directory or add the cloned directory to the PATH variable.
   
-  
 **DISCLAIMER**: *You have to reopen the terminal window or VS Code (if you use the integrated terminal)*
+
+**USAGE**: Just type *autobrancher* in your terminal.
