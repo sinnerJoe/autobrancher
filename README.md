@@ -19,7 +19,11 @@
   *Add this string at the end of /etc/bash.bashrc:*
   
     alias autobrancher="node %PATH_TO_THE_REPO_FOLDER%/index.js"
+    
+    Reopen the terminal/VS Code
 
 - **Windows CMD/Powershell**
 
   Put the autobrancher.bat file in a PATH directory or add the cloned directory to the PATH variable.
+  
+  Reopen the terminal/VS Code
