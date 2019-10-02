@@ -23,7 +23,7 @@
 
 - **Windows CMD/Powershell**
 
-  Put the autobrancher.bat file in a PATH directory or add the cloned directory to the PATH variable.
+  Put the autobrancher.bat file in a PATH directory or [add the cloned directory to the PATH variable](https://helpdeskgeek.com/windows-10/add-windows-path-environment-variable/).
   
 **DISCLAIMER**: *You have to reopen the terminal window or VS Code (if you use the integrated terminal)*
 
