@@ -140,6 +140,8 @@ try{
         console.log(`https://bitbucket.org/adminme/${reponame}/pull-requests/new?source=${toDevBranch}&dest=development`);
         console.log(`To qa:`);
         console.log(`https://bitbucket.org/adminme/${reponame}/pull-requests/new?source=${toQaBranch}&dest=qa`);
+		console.log('To master:');
+		console.log(`https://bitbucket.org/adminme/${reponame}/pull-requests/new?source=${mainBranch}&dest=master`);
 
 }catch(err){
 
