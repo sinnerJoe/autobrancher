@@ -131,8 +131,14 @@ fetchRemoteBranches();
 
 try{
         pushTo(mainBranch);
-        publishTemportaryBranch(toDevBranch, 'development');
-        publishTemportaryBranch(toQaBranch, 'qa');
+        moveToBranch(mainBranch)
+        pullFrom('master')
+        publishTemporaryBranch(toQaBranch, 'qa', 'master');
+        publishTemporaryBranch(toDevBranch, 'development', 'qa');
+        [
+            toQaBranch,
+            toDevBranch
+        ].forEach(deleteBranch);
         const reponame = getReponame();
         if(!reponame) return;
         console.log('\n\n========Pull request links============');
@@ -148,14 +154,9 @@ try{
 }
 
 
-
-function publishTemportaryBranch(branch, pullTarget) {
-
-    let stage = 0
+function publishTemporaryBranch(branch, pullTarget, prevBranch) {
 
     try {
-
-        moveToBranch(mainBranch)
 
         if (!branchExistsLocaly(branch)) {
             console.log(`Branch ${branch} created!`)
@@ -165,27 +166,16 @@ function publishTemportaryBranch(branch, pullTarget) {
             moveToBranch(branch)
         }
 
-        stage = 1;
         if (branchExistsRemotely(branch)) pullFrom(branch);
-        stage = 2
         pullFrom(pullTarget)
-        stage = 3
-        mergeWith(mainBranch)
+        mergeWith(prevBranch)
         pushTo(branch)
-        moveToBranch(mainBranch)
-        deleteBranch(branch)
+        moveToBranch(prevBranch)
     } catch (err) {
         console.log("ERROR " + err.message);
         if (err.message.includes("Command failed: git pull origin")) {
             console.log(`Conflict on branch "${branch}" after pulling from "${pullTarget}"`)
             throw err
-        }
-
-        switch (stage) {
-            case 1: console.log(`Conflict on pulling remote branch origin/${branch}`); throw err;
-            case 2: console.log(`Conflict on pulling remote branch origin/${pullTarget} into ${branch}`); throw err;
-            case 3: console.log(`Conflict on merge of ${mainBranch} into ${branch}`); throw err;
-            default: console.log('OTHER ERROR: ' + err.message); break;
         }
     }
 }
