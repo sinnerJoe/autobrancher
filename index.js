@@ -135,6 +135,7 @@ try{
         pullFrom('master')
         publishTemporaryBranch(toQaBranch, 'qa', 'master');
         publishTemporaryBranch(toDevBranch, 'development', 'qa');
+        moveToBranch(mainBranch)
         [
             toQaBranch,
             toDevBranch
