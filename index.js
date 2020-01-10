@@ -9,6 +9,7 @@ const createBranch = (branchName) => {
 }
 
 const deleteBranch = (branchName) => {
+    console.log(`git branch -D ${branchName}`)
     return cp.execSync(`git branch -D ${branchName}`).toString();
 }
 
@@ -133,13 +134,11 @@ try{
         pushTo(mainBranch);
         moveToBranch(mainBranch)
         pullFrom('master')
-        publishTemporaryBranch(toQaBranch, 'qa', 'master');
+        publishTemporaryBranch(toQaBranch, 'qa', toQaBranch);
         publishTemporaryBranch(toDevBranch, 'development', 'qa');
         moveToBranch(mainBranch)
-        [
-            toQaBranch,
-            toDevBranch
-        ].forEach(deleteBranch);
+        deleteBranch(toQaBranch);
+        deleteBranch(toDevBranch);
         const reponame = getReponame();
         if(!reponame) return;
         console.log('\n\n========Pull request links============');
@@ -151,7 +150,7 @@ try{
 		console.log(`https://bitbucket.org/adminme/${reponame}/pull-requests/new?source=${mainBranch}&dest=master`);
 
 }catch(err){
-
+    console.log("CHECK OUT THE ERROR")
 }
 
 
