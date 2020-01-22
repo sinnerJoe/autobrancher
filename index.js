@@ -22,7 +22,9 @@ const pullFrom = (branchName) => {
 }
 
 const mergeWith = (branchName) => {
-    return cp.execSync(`git merge ${branchName}`).toString();
+    if (!['qa', 'development', 'master'].includes(branchName))
+         return cp.execSync(`git merge ${branchName}`).toString();
+    else return pullFrom(branchName);
 }
 
 const pushTo = (branchName) => {
