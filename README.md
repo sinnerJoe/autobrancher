@@ -33,4 +33,4 @@
 
 Just type *autobrancher* in your terminal.
 
-In you encounter a conflict, resolve it, commit and retype *autobrancher* again in the terminal
+If you encounter a conflict, resolve it, commit and retype *autobrancher* again in the terminal
